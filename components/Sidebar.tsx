@@ -1,17 +1,16 @@
 "use client";
 import {
-  CoinsIcon,
-  HomeIcon,
-  icons,
-  Layers2Icon,
-  MenuIcon,
-  ShieldCheckIcon,
+    CoinsIcon,
+    HomeIcon,
+    Layers2Icon,
+    MenuIcon,
+    ShieldCheckIcon,
 } from "lucide-react";
-import React, { useState } from "react";
-import Logo from "./Logo";
 import Link from "next/link";
-import { Button, buttonVariants } from "./ui/button";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import Logo from "./Logo";
+import { Button, buttonVariants } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 const routes = [
   {
@@ -52,7 +51,7 @@ export const DisktopSidebar = () => {
         {routes.map((route) => (
           <Link
             key={route.href}
-            href={route.href}
+            href={route.href.length === 0 ? "/" : route.href}
             className={buttonVariants({
               variant:
                 activeRoute.href === route.href
@@ -94,7 +93,7 @@ export const MobileSidebar = () => {
               {routes.map((route) => (
                 <Link
                   key={route.href}
-                  href={route.href}
+                  href={route.href.length === 0 ? "/" : route.href}
                   className={buttonVariants({
                     variant:
                       activeRoute.href === route.href
